@@ -1,0 +1,12 @@
+/* Custom CSS for the cart count badge */
+.bg-orange {
+    background-color: rgb(255, 0, 183) !important;
+  }
+  
+button{
+  
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 86px
+
+}

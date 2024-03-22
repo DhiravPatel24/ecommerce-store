@@ -1,0 +1,62 @@
+/* styles.css */
+
+  
+
+  /* product.component.css */
+.product-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.product-image {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.product-info {
+  margin-top: 35px;
+ 
+  margin-left: 100px;
+  flex-grow: 1;
+}
+
+.product-info h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-info p {
+  margin-bottom: 10px;
+}
+
+.product-info button {
+
+  padding: 10px 20px;
+}
+.price{
+  
+  color: green;
+}
+.product-info .price{
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.image{
+  width: 400px;
+  height: 400px;
+}
+
+/* product.component.css */
+.description-list {
+
+  padding-left: 0px;
+  margin-right: 35px;
+
+  list-style-type: none; /* Remove default bullet points */
+}
+
+.description-list li {
+  margin-bottom: 5px; /* Add margin between list items */
+}

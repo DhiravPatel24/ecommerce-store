@@ -1,0 +1,48 @@
+.footer {
+    background-color: #171718; /* Light gray background color */
+    padding: 20px 0; /* Add some padding */
+    font-size: 14px; 
+    color: white;/* Adjust font size */
+  }
+  
+  .container {
+    max-width: 1200px; /* Set maximum width for content */
+    margin: 0 auto; /* Center content horizontally */
+  }
+  
+  /* Style for the column layout */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  /* Style for individual columns */
+  .col-md-4 {
+    width: 30%; /* Adjust column width as needed */
+    margin-bottom: 20px; /* Add some space between columns */
+  }
+  
+  /* Style for headings */
+  h5 {
+    margin-bottom: 10px; /* Add some space below headings */
+  }
+  
+  /* Style for text */
+  p {
+    margin-bottom: 5px; /* Add some space below paragraphs */
+  }
+  
+  /* Style for horizontal rule */
+  hr {
+    border-color: #dee2e6; /* Light gray border color */
+  }
+
+  .copyright{
+    text-align: center;
+  }
+
+  h5{
+    color: #ff9900;
+  }
+  

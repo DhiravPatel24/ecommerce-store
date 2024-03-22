@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div class="container">
+    <h2>Cart</h2>
+    <div *ngIf="cartItems.length === 0">
+        <p>Your cart is empty.</p>
+    </div>
+    <div *ngFor="let item of cartItems; let i = index">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img [src]="item.image" class="img-fluid rounded-start" alt="{{ item.name }}">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <!-- <p class="card-text">{{ item.description }}</p> -->
+                        <p class="card-text">Price: {{ item.price }}</p>
+                        <p class="card-text">Amount: {{ item.price * item.quantity }}</p>
+                        <div class="d-flex align-items-center">
+                            <!-- Quantity buttons -->
+                            <button class="btn btn-secondary me-2" (click)="decrementQuantity(i)">-</button>
+                            <span>{{ item.quantity }}</span>
+                            <button class="btn btn-secondary ms-2" (click)="incrementQuantity(i)">+</button>
+                            <!-- Remove button -->
+                            <button class="btn btn-danger ms-auto" (click)="removeFromCart(item)">Remove</button><br>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="text-center mt-4 mb-4" style="display: flex; justify-content: space-between;" >
+        <button class="btn btn-secondary" style="margin-right: 10px;" routerLink="/home">Continue Shopping</button>
+        <div *ngIf="cartItems.length > 0" class="text-end">
+            <p style="color: green; ">Total Price: {{ getTotalPrice() }}</p>
+        </div>
+        <button (click)="onCheckout()" *ngIf="cartItems.length > 0" class="btn btn-primary me-2"  >Proceed to Checkout</button>
+    </div>
+</div>
+
+

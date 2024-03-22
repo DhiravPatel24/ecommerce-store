@@ -1,0 +1,42 @@
+.card-container {
+    width: 200px; /* Set the width as per your requirement */
+   
+    margin-right: 10px; /* Margin between cards */
+  }
+  
+  .card-row {
+    display: flex; /* Use flexbox layout */
+    flex-wrap: nowrap; /* Prevent wrapping to the next line */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+  }
+
+  .card-container img {
+    width: 198px; /* Set the fixed width */
+    height: 150px; /* Set the fixed height *
+    object-fit: contain; /* Maintain aspect ratio and cover the entire space */
+   
+  }
+  
+
+  /* CSS for the card container */
+.card-container {
+    position: relative;
+  }
+  
+  /* CSS for the cart icon */
+  .btn-cart {
+    position: absolute;
+    bottom: 25px;
+    right: 10px;
+  }
+  
+  .w-100 {
+    height: 500px;
+    width: 100%!important;
+    margin-bottom: 30px;
+    margin-top: 0px;
+}
+
+  
+  
+  
