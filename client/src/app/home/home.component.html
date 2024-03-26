@@ -29,9 +29,9 @@
 
 
   <div class="container">
-    <!-- Iterate over products and group them into rows -->
+    
     <div class="row">
-      <div class="col-md-3" *ngFor="let product of products" >
+      <div class="col-md-3" style="margin-bottom: 15px;" *ngFor="let product of products" >
         <div class="card-container">
           <div class="card mb-4">
             <img class="card-img-top" (click)="redirectToProductPage(product._id)" [src]="product.image" alt="{{ product.name }}">
@@ -39,7 +39,7 @@
               <h5 class="card-title">{{ product.name }}</h5>
               <!-- <p class="card-text">{{ product.description }}</p> -->
               <p class="card-text" style="color: green;">Price: {{ product.price }}</p>
-              <!-- Cart icon -->
+             
               <button class="btn btn-primary btn-cart" (click)="addToCart(product)">
                 <i class="fas fa-shopping-cart"></i>
               </button>

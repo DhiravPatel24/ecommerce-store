@@ -14,22 +14,21 @@ export class AuthService {
   constructor(private http: HttpClient) {}
   login(email: string, password: string): Observable<boolean> {
 
+    
     return this.http.post<any>('http://localhost:4242/login', { email, password }).pipe(
       map(response => {
-    
-        if (response && response.message === 'Login successful') {
-    
+        if (response && response.token) {
+          console.log(response)
           this.loggedIn = true;
-   
           this.token = response.token;
-          return true;
+          return response; 
         } else {
           return false;
         }
       }),
       catchError(error => {
         console.error('Login error:', error);
-        return of(false);
+        return of(false); 
       })
     );
   }
@@ -42,9 +41,25 @@ export class AuthService {
     return this.loggedIn;
   }
 
+
+  getTokenFromCookie(): string | null {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith('token=')) {
+        return cookie.substring(6);
+      }
+    }
+    return null; 
+  }
+
   logout(): void {
-    // Implement logout logic (if needed)
-    this.token = null; // Clear the token on logout
-    this.loggedIn = false;
+ 
+    this.token = null;
+
+   
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+   
   }
 }

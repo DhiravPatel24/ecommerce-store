@@ -11,6 +11,7 @@ const jwt = require('jsonwebtoken');
 
 
 const Product = require('./models/Products.js')
+const Contact = require('./models/Contact.js')
 
 
 const app = express()
@@ -53,44 +54,43 @@ mongoose.connect('mongodb://localhost:27017/Product')
       });
 
       async function getProductById(productId) {
-        // Replace this with your own logic to fetch product details from your database
-        // Example assuming you're using MongoDB with Mongoose:
-        const Product = require('./models/Products.js'); // Import your product model
+       
+        const Product = require('./models/Products.js');
     
-        // Fetch product details from the database
+        
         const product = await Product.findById(productId);
     
-        // Return the product details
+        
         return product;
     }
 
       app.post('/checkout/:productId', async (req, res, next) => {
         try {
-            // Retrieve the product ID from the request parameters
+            
             const productId = req.params.productId;
     
-            // Fetch the product details from your database using the productId
+            
             const product = await getProductById(productId);
     
-            // Create a Stripe session for the selected product
+          
             const session = await stripe.checkout.sessions.create({
                 line_items: [{
                     price_data: {
                         currency: 'inr',
                         product_data: {
                             name: product.name,
-                            // Add other product data as needed
+                            
                         },
-                        unit_amount: product.price*100, // Convert price to cents
+                        unit_amount: product.price*100, 
                     },
-                    quantity: 1, // You can adjust the quantity if needed
+                    quantity: 1, 
                 }],
                 mode: 'payment',
                 success_url: 'http://localhost:4242/success.html',
                 cancel_url: 'http://localhost:4242/cancel.html'
             });
     
-            // Send the session ID back to the client
+          
             res.status(200).json({ sessionId: session.id });
         } catch (error) {
             next(error);
@@ -119,7 +119,7 @@ mongoose.connect('mongodb://localhost:27017/Product')
                         currency: 'inr',
                         product_data: {
                             name: item.name,
-                            // image: [item.image]
+                            // images: [item.image]
                         },
                         unit_amount: item.price * 100,
                     },
@@ -212,15 +212,19 @@ mongoose.connect('mongodb://localhost:27017/Product')
   });
   
 
-  app.post('/login', async (req, res) => {
+
+
+
+  app.post('/login',   async (req, res) => {
       const { email, password } = req.body;
   
       try {
 
           const admin = await Admin.findOne({ email });
-  
+      
           if (!admin) {
               return res.status(401).json({ message: 'Invalid email or password' });
+              
           }
 
           const isPasswordValid = await bcrypt.compare(password, admin.password);
@@ -228,13 +232,11 @@ mongoose.connect('mongodb://localhost:27017/Product')
           if (!isPasswordValid) {
               return res.status(401).json({ message: 'Invalid email or password' });
           }
-          const token = jwt.sign({ email: admin.email, isAdmin: true }, 'SECRET', { expiresIn: '1h' });
+          const token = jwt.sign({ email: admin.email,password:admin.password, isAdmin: true }, 'SECRET', { expiresIn: '1h' });
        
-
-
         res.status(200).json({ message: 'Login successful', token: token });
           
-          // res.status(200).json({ message: 'Login successful' });
+         
       } catch (error) {
           console.error(error);
           res.status(500).json({ message: 'Internal server error' });
@@ -253,7 +255,26 @@ mongoose.connect('mongodb://localhost:27017/Product')
   });
 
 
- 
+  app.post('/contact', async (req, res) => {
+    try {
+      const { name, email, message } = req.body;
+  
+     
+      const newContact = new Contact({
+        name,
+        email,
+        message
+      });
+  
+     
+      await newContact.save();
+  
+      res.status(201).json({ success: true, message: 'Contact form submitted successfully!' });
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      res.status(500).json({ success: false, message: 'An error occurred while submitting the contact form.' });
+    }
+  });
  
 
  

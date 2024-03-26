@@ -11,7 +11,7 @@ import { Product } from '../Products.model';
 })
 export class StoreService {
   
-  private apiUrl = 'http://localhost:4242/api/images'; // Update with your server URL
+  private apiUrl = 'http://localhost:4242/api/images'; 
   private apiUrls = 'http://localhost:4242/products'
   private Url = 'http://localhost:4242/products';
 
@@ -43,7 +43,7 @@ deleteProduct(productId: string): Observable<void> {
   }
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);
-    // You can throw your own custom error handling logic here
-    return throwError(error); // Use throwError instead of throw
+   
+    return throwError(error); 
   }
 }

@@ -30,7 +30,7 @@
     <tr *ngFor="let product of getPaginatedProducts()">
       <td><img src="{{ product.image }}" alt="{{ product.name }}" style="max-width: 100px; max-height: 100px;"></td>
       <td>{{ product.name }}</td>
-      <td>{{ product.description }}</td>
+      <td class="des">{{ product.description }}</td>
       <td>{{ product.price }}</td>
       <td>
         <button class="btn btn-primary" style="margin-right: 15px;" (click)="editProduct(product)">Edit</button>

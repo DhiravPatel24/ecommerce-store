@@ -18,11 +18,11 @@
                         <p class="card-text">Price: {{ item.price }}</p>
                         <p class="card-text">Amount: {{ item.price * item.quantity }}</p>
                         <div class="d-flex align-items-center">
-                            <!-- Quantity buttons -->
+                            
                             <button class="btn btn-secondary me-2" (click)="decrementQuantity(i)">-</button>
                             <span>{{ item.quantity }}</span>
                             <button class="btn btn-secondary ms-2" (click)="incrementQuantity(i)">+</button>
-                            <!-- Remove button -->
+                           
                             <button class="btn btn-danger ms-auto" (click)="removeFromCart(item)">Remove</button><br>
                            
                         </div>
@@ -37,7 +37,7 @@
         <div *ngIf="cartItems.length > 0" class="text-end">
             <p style="color: green; ">Total Price: {{ getTotalPrice() }}</p>
         </div>
-        <button (click)="onCheckout()" *ngIf="cartItems.length > 0" class="btn btn-primary me-2"  >Proceed to Checkout</button>
+        <button (click)="onCheckout()" *ngIf="cartItems.length > 0" class="btn btn-primary me-2" style=" background-color: rgb(255, 128, 0); border: none   ;"  >Proceed to Checkout</button>
     </div>
 </div>
 

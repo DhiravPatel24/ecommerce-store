@@ -16,16 +16,15 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();
-    
   }
 
   clearCart(): void {
-    this.cartService.clearCart(); // Call clearCart method
+    this.cartService.clearCart(); 
   } 
 
   removeFromCart(item: Product): void {
-    this.cartService.removeFromCart(item); // Remove the item from the cart service
-    this.cartItems = this.cartItems.filter(i => i !== item); // Remove the item from the local cart array
+    this.cartService.removeFromCart(item); 
+    this.cartItems = this.cartItems.filter(i => i !== item); 
   }
 
   incrementQuantity(index: number): void {

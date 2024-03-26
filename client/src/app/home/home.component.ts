@@ -35,10 +35,10 @@ export class HomeComponent implements OnInit{
   }
   addToCart(product: Product): void {
     
-    // Update cart count in the service
+    
     this.cartService.updateCartCount(1);
 
-    // Add the selected product to the cart
+    
     this.cartService.addToCart(product);
     
   }
@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit{
 }
 
 redirectToProductPage(productId: string): void {
-  this.router.navigate(['/product', productId]); // Navigate to product page with product ID as route parameter
+  this.router.navigate(['/product', productId]); 
 }
 
 

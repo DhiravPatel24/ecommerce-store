@@ -19,12 +19,12 @@ export class AdminComponent implements OnInit{
   showEditForm = false;
   product: Product[] = [];
   selectedProduct: Product | null = null;
-  currentPage: number = 1; // Initialize current page to 1
-  itemsPerPage: number = 7; // Set items per page to 5
+  currentPage: number = 1; 
+  itemsPerPage: number = 7; 
 
 
 
-  newProduct: Product = { name: '', description: '', price: 0, image: '', quantity: 0 }; // Initialize with default quantity
+  newProduct: Product = { name: '', description: '', price: 0, image: '', quantity: 0 }; 
 
   ngOnInit(): void {
     this.loadProducts()
@@ -68,12 +68,12 @@ export class AdminComponent implements OnInit{
 
   editProduct(product: Product): void {
     this.selectedProduct = { ...product };
-   // Make a copy of the selected product
+  
     this.showEditForm=true
   }
 
   cancelEdit(): void {
-    this.selectedProduct = null; // Reset selectedProduct to null to hide the form
+    this.selectedProduct = null; 
     this.showAddForm=false
   }
 
@@ -101,7 +101,7 @@ export class AdminComponent implements OnInit{
 
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
-    if (file && this.selectedProduct) { // Check if selectedProduct is not null
+    if (file && this.selectedProduct) { 
       console.log(this.selectedProduct)
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -120,32 +120,32 @@ export class AdminComponent implements OnInit{
   toggleAddForm(): void {
     this.showAddForm = !this.showAddForm;
     if (!this.showAddForm) {
-      this.resetNewProduct(); // Reset newProduct when hiding the form
+      this.resetNewProduct(); 
     }
   }
 
   resetNewProduct(): void {
-    this.newProduct = { name: '', description: '', price: 0, image: '', quantity:0 }; // Reset to empty values
+    this.newProduct = { name: '', description: '', price: 0, image: '', quantity:0 }; 
   }
 
 
   saveProduct(form: NgForm): void {
-    // Check if the form is valid
+  
     if (form.invalid) {
       return;
     }
-    // Call the method in your service to save the product to the database
+   
     this.productService.addProduct(this.newProduct).subscribe(
       (response) => {
-        // Handle success response if needed
+       
         console.log('Product added successfully:', response);
-        // Reset the form and newProduct
+        
         form.resetForm();
         this.newProduct = { name: '', description: '', price: 0, image: '' , quantity:0};
         this.showAddForm=false
       },
       (error) => {
-        // Handle error response if needed
+       
         console.error('Error adding product:', error);
       }
     );
@@ -158,7 +158,7 @@ export class AdminComponent implements OnInit{
     }
 
     this.productService.deleteProduct(productId).subscribe(() => {
-      // Remove the deleted product from the products array
+     
       this.products = this.products.filter(product => product._id !== productId);
     }, error => {
       console.error('Error deleting product:', error);
@@ -166,6 +166,7 @@ export class AdminComponent implements OnInit{
   }
   
   onLogOut():void{
+    this.authservice.logout()
     this.router.navigate(['/login'])
     
    

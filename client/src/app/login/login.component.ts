@@ -17,35 +17,42 @@ export class LoginComponent {
 
 
   onSubmit(): void {
-    // Check if email and password are provided
+   
     if (!this.email || !this.password) {
       console.error('Please provide both email and password');
-      // Show error message to the user
+      
       return;
     }
-
-    // Call the login method from the authentication service
+  
+    
     this.authService.login(this.email, this.password).subscribe(
       (response: any) => {
-        // Redirect to admin route upon successful login
        
-        const token:any = this.authService.getToken()
+        if (response) {
+          
+          const token: any = response.token;
+          console.log(token)
 
-        // Store token in a cookie
-        this.setTokenInCookie(token);
-   
-        this.router.navigate(['/admin']);
+          
+          this.setTokenInCookie(token);
+          this.router.navigate(['/admin']);
+        } else {
+          
+          console.error('Login failed:', response.message);
+          
+          this.loginError = response.message || 'An error occurred during login.';
+        }
       },
       error => {
         console.error('Login error:', error);
-        // Handle login errors, display error message to the user
+       
         this.loginError = error.message || 'An error occurred during login.';
       }
     );
   }
 
-  // Function to set JWT token in a cookie
-  private setTokenInCookie(token: string): void {
+ 
+  private setTokenInCookie(token: any): void {
     document.cookie = `token=${token}; path=/; max-age=${60 * 60};`;
   }
 

@@ -16,6 +16,8 @@ import { FooterComponent } from './footer/footer.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { ProductComponent } from './product/product.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ProductComponent } from './product/product.component';
     AdminComponent,
     LoginComponent,
     FooterComponent,
-    ProductComponent   
+    ProductComponent,
+    ContactComponent,
+    AboutComponent   
   ],
   imports: [
     BrowserModule,

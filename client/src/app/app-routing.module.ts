@@ -6,6 +6,8 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth-guard.service';
 import { ProductComponent } from './product/product.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   {
@@ -34,6 +36,14 @@ const routes: Routes = [
     path: 'product/:id', 
     component: ProductComponent 
   },
+  {
+    path:'contact',
+    component: ContactComponent
+  },
+  {
+    path:'about',
+    component:AboutComponent
+  }
 
   
 ];
