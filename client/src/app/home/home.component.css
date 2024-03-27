@@ -40,6 +40,33 @@
     /* margin-bottom: 30px; */
     margin-top: 0px;
 }
+.img_btn{
+  border-radius: 0;
+  border-color: brown;
+  color: black;
+  background: none;
+  padding: 15px;
+ 
+}
+
+.carousel-item .img{
+  position: relative;
+}
+
+.carousel-item .img_btn {
+  position: absolute;
+  bottom: 40%; /* Adjust this value to position the button vertically */
+  left: 80%; /* Center the button horizontally */
+  transform: translateX(-50%);
+  /* background-color: rgba(255, 255, 255, 0.7); Add background color with transparency */
+  /* padding: 10px 20px; */
+  border-color: brown;
+  border-radius: 0px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
 
   
