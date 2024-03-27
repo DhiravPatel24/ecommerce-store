@@ -51,6 +51,11 @@ redirectToProductPage(productId: string): void {
   this.router.navigate(['/product', productId]); 
 }
 
+isProductRoute(): boolean {
+  return this.router.url === '/products';
+}
+
+
 
 
 }

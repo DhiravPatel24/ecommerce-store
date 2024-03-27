@@ -18,6 +18,7 @@ import { AuthGuard } from './auth-guard.service';
 import { ProductComponent } from './product/product.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
+import { ProductpageComponent } from './productpage/productpage.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AboutComponent } from './about/about.component';
     FooterComponent,
     ProductComponent,
     ContactComponent,
-    AboutComponent   
+    AboutComponent,
+    ProductpageComponent   
   ],
   imports: [
     BrowserModule,

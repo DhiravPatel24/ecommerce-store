@@ -14,11 +14,11 @@
         
         <p class="price">Price: {{ product.price }}</p>
         <button class="btn btn-primary"
-         style="margin-right: 20px; background-color: rgb(255, 128, 0); color: black; border: none;" 
+         style="margin-right: 20px; background-color: rgb(255, 128, 0); color: black; border: none; border-radius: 0;" 
          (click)="onCheckouts(product._id)"
          >
          Buy Now</button>
-        <button class="btn btn-primary" (click)="addToCart(product)" >Add to Cart</button>
+        <button class="btn btn-primary" style="border-radius: 0" (click)="addToCart(product)" >Add to Cart</button>
 
     </div>
 </div>

@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div #carousel id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1400" data-bs-pause="false">
+<div *ngIf="!isProductRoute()" #carousel id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1400" data-bs-pause="false">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="https://img.freepik.com/free-photo/online-fashion-shopping-with-computer_23-2150400628.jpg?t=st=1710854585~exp=1710858185~hmac=52be692a8bd1a3ef60a7a9089139a02fc95d14766a5007ec99961a03292659ad&w=740"
@@ -40,8 +40,8 @@
               <!-- <p class="card-text">{{ product.description }}</p> -->
               <p class="card-text" style="color: green;">Price: {{ product.price }}</p>
              
-              <button class="btn btn-primary btn-cart" (click)="addToCart(product)">
-                <i class="fas fa-shopping-cart"></i>
+              <button class="btn btn-primary btn-cart" style="background-color: white; border: none;" (click)="addToCart(product)">
+                <i class="fas fa-shopping-cart" style="color: rgb(255, 0, 183);"></i>
               </button>
             </div>
           </div>
@@ -50,6 +50,6 @@
     </div>
   </div>
 
-  <app-footer></app-footer>
+<app-footer></app-footer>
   
 <!-- <app-product *ngIf="selectedProduct" [product]="selectedProduct"></app-product> -->
