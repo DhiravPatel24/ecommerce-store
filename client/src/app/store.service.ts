@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable , catchError, throwError} from 'rxjs';
 // store.service.ts
@@ -30,6 +30,7 @@ export class StoreService {
   addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.apiUrls, product);
   }
+
 
 
 deleteProduct(productId: string): Observable<void> {

@@ -9,7 +9,6 @@ const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken');
 
 
-
 const Product = require('./models/Products.js')
 const Contact = require('./models/Contact.js')
 
@@ -17,25 +16,49 @@ const Contact = require('./models/Contact.js')
 const app = express()
 
 app.use(cors());
-app.use(express.json())
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+app.use(express.json({limit:'50mb'}))
+app.use(bodyParser.urlencoded({ limit: '500mb', extended: true }));
+app.use(bodyParser.json({ limit: '500mb' }));
 
 app.use(express.static('public'))
 app.use(cookieParser())
 app.set('view engine', 'ejs');
 
 mongoose.connect('mongodb://localhost:27017/Product')
-    .then(() => {
-        console.log('Connected to MongoDB');
+.then(() => {
+  console.log('Connected to MongoDB');
+})
+.catch((error) => console.error('Error connecting to MongoDB:', error));
+
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    
+      cb(null, './public');
+  },
+  filename: function (req, file, cb) {
+      cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+
+    const upload = multer({
+      storage:storage,
+      onError: (err, next) => {
+        console.error('Multer error:', err);
+        next(err);
+      }
     })
-    .catch((error) => console.error('Error connecting to MongoDB:', error));
 
-    app.post('/products', async (req, res) => {
+
+    app.post('/products', upload.single('image') , async (req, res) => {
         try {
-
-          const { name, price, description, image } = req.body;
-      
+          
+          
+          const { name, price, description , image} = req.body;    
+        
+          console.log(req.file)
+    
 
           const newProduct = new Product({
             name,
@@ -43,13 +66,14 @@ mongoose.connect('mongodb://localhost:27017/Product')
             description,
             image
           });
-      
-     
+        
+          
           const savedProduct = await newProduct.save();
       
           res.status(201).json(savedProduct); 
         } catch (error) {
-          res.status(500).json({ error: 'Internal server error' }); 
+          console.log(error)
+          res.status(500).json({ error: 'Internal server error', error }); 
         }
       });
 
@@ -119,7 +143,7 @@ mongoose.connect('mongodb://localhost:27017/Product')
                         currency: 'inr',
                         product_data: {
                             name: item.name,
-                            // images: [item.image]
+                           
                         },
                         unit_amount: item.price * 100,
                     },
@@ -137,7 +161,7 @@ mongoose.connect('mongodb://localhost:27017/Product')
 
 
 
-    app.put('/products/:productId', async (req, res) => {
+    app.put('/products/:productId',  async (req, res) => {
       try {
         const productId = req.params.productId;
         const { name, price, description, image } = req.body;

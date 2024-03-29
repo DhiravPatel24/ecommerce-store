@@ -4,6 +4,7 @@ import { StoreService } from '../store.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { catchError, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-admin',
@@ -22,9 +23,9 @@ export class AdminComponent implements OnInit{
   currentPage: number = 1; 
   itemsPerPage: number = 7; 
 
+  selectedFileName: string = '';
 
-
-  newProduct: Product = { name: '', description: '', price: 0, image: '', quantity: 0 }; 
+  newProduct: Product = {  name: '', description: '', price: 0, image: '', quantity: 0 }; 
 
   ngOnInit(): void {
     this.loadProducts()
@@ -68,11 +69,13 @@ export class AdminComponent implements OnInit{
 
   editProduct(product: Product): void {
     this.selectedProduct = { ...product };
+ 
   
     this.showEditForm=true
   }
 
   cancelEdit(): void {
+ 
     this.selectedProduct = null; 
     this.showAddForm=false
   }
@@ -101,20 +104,20 @@ export class AdminComponent implements OnInit{
 
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
-    if (file && this.selectedProduct) { 
-      console.log(this.selectedProduct)
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
+   
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+        this.newProduct.image = reader.result as string;
         if (this.selectedProduct !== null && this.selectedProduct !== undefined) {
-          this.selectedProduct.image=reader.result as string
-        }
-        
-        
-      };
-    }
+          this.selectedProduct.image = reader.result as string
+          }
+
+      console.log(this.newProduct)
+    
   }
-  
+  }
+
   
 
   toggleAddForm(): void {
@@ -125,6 +128,7 @@ export class AdminComponent implements OnInit{
   }
 
   resetNewProduct(): void {
+    this.showAddForm=false
     this.newProduct = { name: '', description: '', price: 0, image: '', quantity:0 }; 
   }
 
@@ -150,6 +154,8 @@ export class AdminComponent implements OnInit{
       }
     );
   }
+
+
 
   deleteProduct(productId: any): void {
     if (!productId) {

@@ -44,7 +44,7 @@
   
   <div *ngIf="showEditForm && selectedProduct"> 
   
-    <form #form="ngForm" style="margin-left: 200px; margin-right: 200px;  margin-bottom: 10PX; margin-top: 20px;">
+    <form action="/products"  method="PUT" enctype="multipart/form-data" #form="ngForm" style="margin-left: 200px; margin-right: 200px;  margin-bottom: 10PX; margin-top: 20px;">
         <h3>Edit Product</h3>
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
@@ -66,8 +66,7 @@
 
       <div class="mb-3" >
         <label for="imageUrl" class="form-label">Image (URL)</label>
-        <input type="text" class="form-control" id="imageUrl" name="imageUrl" [(ngModel)]="selectedProduct.image">
-
+        <input type="text" class="form-control" id="image" name="image" [(ngModel)]="selectedProduct.image" >
       </div>
   
       <button type="submit" style="margin-right: 10px;" class="btn btn-primary" (click)="updateProduct(form)">Update</button>
@@ -78,7 +77,7 @@
 
   <div *ngIf="showAddForm">
     
-    <form #form="ngForm" style="margin-left: 200px; margin-right: 200px; margin-bottom: 10PX; margin-top: 20px;">
+    <form  action="/products" method="POST" enctype="multipart/form-data" #form="ngForm" style="margin-left: 200px; margin-right: 200px; margin-bottom: 10PX; margin-top: 20px;">
         <h3>Add Product</h3>
       <!-- Form fields for adding a product -->
       <div class="mb-3">
@@ -95,18 +94,21 @@
       </div>
       <div class="mb-3">
         <label for="image" class="form-label">Image (Upload)</label>
-        <input type="file" class="form-control" id="image" name="image"  accept="image/*">
+        <input type="file" class="form-control" id="image" name="image"   (change)="onFileSelected($event)" accept="image/*">
       </div>
+      <img *ngIf="newProduct?.image" [src]="newProduct.image" alt="Product Image" style="max-width: 100px; max-height: 100px;">
+    
       <!-- Image URL field -->
       <div class="mb-3" >
         <label for="imageUrl" class="form-label">Image (URL)</label>
-        <input type="text" class="form-control" id="imageUrl" name="imageUrl" [(ngModel)]="newProduct.image">
+        <input type="text" class="form-control" id="image" name="image" [(ngModel)]="newProduct.image" >
       </div>
       <!-- Add more fields as needed -->
   
       <button type="submit" style="margin-right: 10px;" class="btn btn-primary" (click)="saveProduct(form)">Save</button>
-      <button type="button" class="btn btn-secondary"(click)="cancelEdit()" >Cancel</button>
+      <button type="button" class="btn btn-secondary"(click)="resetNewProduct()" >Cancel</button>
     </form>
+
   </div>
 
   <nav  *ngIf="!showAddForm && !showEditForm" aria-label="Page navigation example" style="margin-left: 380px;">

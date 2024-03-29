@@ -40,15 +40,8 @@ export class CartService {
   }
 
   getCartItems(): Product[] {
+   return this.cartItems
    
-    const localStorageItems = localStorage.getItem('cartItems');
-    if (localStorageItems) {
-     
-      return JSON.parse(localStorageItems) as Product[];
-    } else {
-      
-      return this.cartItems;
-    }
   }
 
   removeFromCart(item: Product): void {
