@@ -35,7 +35,7 @@
   }
   
   .w-100 {
-    height: 500px;
+    height: 600px;
     width: 100%!important;
     /* margin-bottom: 30px; */
     margin-top: 0px;
@@ -45,7 +45,8 @@
   border-color: brown;
   color: black;
   background: none;
-  padding: 15px;
+  padding: 10px;
+
  
 }
 
@@ -55,17 +56,28 @@
 
 .carousel-item .img_btn {
   position: absolute;
-  bottom: 40%; /* Adjust this value to position the button vertically */
-  left: 80%; /* Center the button horizontally */
+  bottom: 25%; /* Adjust this value to position the button vertically */
+  left: 15%; /* Center the button horizontally */
   transform: translateX(-50%);
   /* background-color: rgba(255, 255, 255, 0.7); Add background color with transparency */
   /* padding: 10px 20px; */
-  border-color: brown;
+  border-color: black;
   border-radius: 0px;
   font-size: 16px;
-  color: #333;
+  background-color: black;
+  letter-spacing: 5px;
+  color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.tag{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  letter-spacing: 5px;
+  color: brown;
 }
 
 

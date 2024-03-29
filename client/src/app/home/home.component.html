@@ -3,13 +3,14 @@
 <div *ngIf="!isProductRoute()" #carousel id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1400" data-bs-pause="false">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="https://img.freepik.com/free-photo/online-fashion-shopping-with-computer_23-2150400628.jpg?t=st=1710854585~exp=1710858185~hmac=52be692a8bd1a3ef60a7a9089139a02fc95d14766a5007ec99961a03292659ad&w=740"
-                class="d-block w-100 " alt="">
-            <button class="img_btn" routerLink="/products">Explore More</button>
+          <img src="https://ethicsinfotech.in/uploads/slider/e-commerce-website.png"
+          class="d-block w-100" alt="">
+            <button class="img_btn" routerLink="/products">SHOP NOW</button>
         </div>
         <div class="carousel-item">
-            <img src="https://img.freepik.com/free-photo/cyber-monday-shopping-sales_23-2148688502.jpg?w=740"
-                class="d-block w-100" alt="">
+          <img src="https://img.freepik.com/free-photo/online-fashion-shopping-with-computer_23-2150400628.jpg?t=st=1710854585~exp=1710858185~hmac=52be692a8bd1a3ef60a7a9089139a02fc95d14766a5007ec99961a03292659ad&w=740"
+          class="d-block w-100 " alt="">
+           
         </div>
         <div class="carousel-item">
             <img src="https://img.freepik.com/premium-photo/shopper-shopaholic-shopping-online-paying-goods-purchases-using-credit-card_122732-3715.jpg?w=740"
@@ -28,6 +29,9 @@
     </button>
 </div>
 
+<div *ngIf="!isProductRoute()" class="tag">
+  <h1>OUR COLLECTION</h1>
+</div>
 
   <div class="container">
     
