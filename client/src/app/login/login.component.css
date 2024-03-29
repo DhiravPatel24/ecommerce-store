@@ -2,15 +2,17 @@ body{
   background: url('https://plus.unsplash.com/premium_photo-1681487829842-2aeff98f8b63?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGUlMjBjb21tZXJjZSUyMHN0b3JlJTIwYmFja2dyb3VuZCUyMGltYWdlfGVufDB8fDB8fHww');
   background-repeat: no-repeat;
   background-size: cover;
+ 
 }
+
 .login-container {
   max-width: 400px;
-  margin-top: 200px;
-  margin-left: 300px;
+  /* margin-top: 200px;
+  margin-left: 300px; */
   padding: 20px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(10, 20, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(10, 20, 0, 0.1); */
 }
 
 .form-group {
@@ -52,4 +54,27 @@ h2{
 
 #password{
   margin-bottom: 10px;
+}
+
+.main{
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffe1e4;
+  width: max-content;
+  margin-left: 120px;
+  padding: 30px;
+  box-shadow:0 0px 10px rgba(38, 24, 0, 1.1);
+}
+
+.img{
+  margin-right: 30px;
+ 
+}
+
+.img img{
+  width: 300px;
+  height: 300px;
+  margin-right: 50px;
 }
