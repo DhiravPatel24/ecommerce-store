@@ -9,11 +9,16 @@ import { ProductComponent } from './product/product.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { ProductpageComponent } from './productpage/productpage.component';
+import { UserloginComponent } from './userlogin/userlogin.component';
+import { CreateuserComponent } from './createuser/createuser.component';
+import { AuthloginService } from './authlogin.service';
+
 
 const routes: Routes = [
   {
     path:'cart',
-    component:CartComponent
+    component:CartComponent,
+    canActivate:[AuthloginService]
   },
   { 
     path: '', 
@@ -22,12 +27,13 @@ const routes: Routes = [
   },
   { 
     path: 'home', 
-    component: HomeComponent
+    component: HomeComponent, 
+    canActivate:[AuthloginService]
   },
   {
     path: 'admin',
     component: AdminComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard],
   },
   {
     path:'login',
@@ -35,19 +41,31 @@ const routes: Routes = [
   },
   { 
     path: 'product/:id', 
-    component: ProductComponent 
+    component: ProductComponent,
+    canActivate:[AuthloginService]
   },
   {
     path:'contact',
-    component: ContactComponent
+    component: ContactComponent,
+    canActivate:[AuthloginService]
   },
   {
     path:'about',
-    component:AboutComponent
+    component:AboutComponent,
+    canActivate:[AuthloginService]
   },
   {
     path:'products',
-    component:ProductpageComponent
+    component:ProductpageComponent,
+    canActivate:[AuthloginService]
+  },
+  {
+    path:'user',
+    component:UserloginComponent
+  },
+  {
+    path:'createuser',
+    component:CreateuserComponent
   }
 
   

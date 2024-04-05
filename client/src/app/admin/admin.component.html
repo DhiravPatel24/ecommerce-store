@@ -1,131 +1,556 @@
-<!-- Include Font Awesome CDN in your HTML -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
 
-<nav class="navbar bg-body-tertiary" style="margin-bottom: 5px;">
-  <div class="container-fluid d-flex justify-content-between align-items-center">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVujhgw2S2i3NLqx7tFA2irEtiSIr5zh4CIQ&usqp=CAU" width="30px" height="30px" style="position: absolute; margin-left: 70px;" alt="">
-    <a class="navbar-brand" routerLink="/admin" style="color: brown;">Admin</a>
-    
-    <div>
-      <!-- Clear cart button -->
-      <button class="btn btn-secondary" (click)="toggleAddForm()">Add</button>
-      <button class="btn btn-danger" style="margin-left: 5px;" (click)="onLogOut()">Logout</button>
+<div class="main">
+
+  <!-- main leftsidebar  -->
+
+  <div class="left_sidebar" *ngIf="sidebar">
+    <img
+      src="https://cdn3d.iconscout.com/3d/premium/thumb/male-student-9638055-7889069.png?f=webp"
+      width="50px"
+      height="50px"
+      style="position: absolute; left: 10px; top: 30px"
+      alt=""
+    />
+    <a
+      class="navbar-brand gradient_text"
+      style="
+        height: fit-content;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 40px;
+        font-size: 50px;
+      "
+      routerLink="/admin"
+      >Admin</a
+    >
+
+    <a style="text-decoration: none; color: black; cursor: pointer"
+      ><div class="product" (click)="toggleproduct()">
+        <img
+          style="width: 20px; height: 20px; margin-left: 10px"
+          src="https://cdn3d.iconscout.com/3d/premium/thumb/product-5806313-4863042.png?f=webp"
+          alt=""
+        />
+        <p
+          style="
+            margin-left: 10px;
+            padding-right: 5px;
+            margin-top: 15px;
+            text-align: center;
+            letter-spacing: 2px;
+          "
+        >
+          Products Details
+        </p>
+      </div></a
+    >
+    <a style="text-decoration: none; color: black; cursor: pointer">
+      <div class="product" (click)="toggleorder()">
+        <img
+          style="width: 20px; height: 20px; margin-left: 10px"
+          src="https://cdn3d.iconscout.com/3d/premium/thumb/shopping-sale-9091270-7375504.png"
+          alt=""
+        />
+        <p
+          style="
+            margin-left: 12px;
+            margin-top: 15px;
+            text-align: center;
+            letter-spacing: 2px;
+          "
+        >
+          Order Details
+        </p>
+      </div></a
+    >
+    <a style="text-decoration: none; color: black; cursor: pointer">
+      <div class="product" (click)="toggleAddForm()">
+        <img
+          style="width: 20px; height: 20px; margin-left: 10px"
+          src="https://cdn3d.iconscout.com/3d/premium/thumb/add-to-cart-9285095-7589679.png?f=webp"
+          alt=""
+        />
+        <p
+          style="
+            margin-left: 12px;
+            margin-top: 15px;
+            text-align: center;
+            letter-spacing: 2px;
+          "
+        >
+          Add Products
+        </p>
+      </div></a
+    >
+    <a style="text-decoration: none; color: black; cursor: pointer">
+      <div class="product" (click)="togglecontactpage()">
+        <img
+          style="width: 20px; height: 20px; margin-left: 10px"
+          src="https://cdn3d.iconscout.com/3d/premium/thumb/new-incoming-message-5832110-4896708.png"
+         
+        />
+        <p
+          style="
+            margin-left: 12px;
+            margin-top: 15px;
+            text-align: center;
+            letter-spacing: 2px;
+          "
+        >
+          Query Messages
+        </p>
+      </div></a
+    >
+    <a style="text-decoration: none; color: black; cursor: pointer">
+      <div class="product" (click)="onLogOut()">
+        <img
+          style="width: 20px; height: 20px; margin-left: 10px"
+          src="https://png.pngtree.com/png-vector/20220226/ourmid/pngtree-power-symbol-power-electronic-vector-png-image_35499852.png"
+          alt=""
+        />
+        <p
+          style="
+            margin-left: 12px;
+            margin-top: 15px;
+            text-align: center;
+            letter-spacing: 2px;
+          "
+        >
+          Logout
+        </p>
+      </div></a
+    >
+  </div>
+
+  <!-- toggle image in sidebar  -->
+
+  <div class="toggleimage" style="height: fit-content" (click)="togglesidebar()">
+    <img
+      *ngIf="sidebar"
+      src="https://cdn3d.iconscout.com/3d/premium/thumb/close-4112733-3408782@0.png?f=webp"
+      width="30px"
+      height="30px"
+      alt=""
+    />
+    <img
+      *ngIf="!sidebar"
+      src="https://cdn3d.iconscout.com/3d/premium/thumb/hamburger-button-8126914-6507119.png?f=webp"
+      width="30px"
+      height="30px"
+      alt=""
+    />
+  </div>
+
+  <!-- main rightside  -->
+
+  <div class="table_div"> 
+
+    <!-- heading and logo  -->
+
+    <div style="display: flex; align-items: center; justify-content: center">
+      <h1
+        class="gradient_text"
+        style="text-align: center; margin: 20px 10px 20px 0"
+      >
+        DP STORE
+      </h1>
+      <img
+        src="https://cdn3d.iconscout.com/3d/premium/thumb/man-shopping-online-using-e-commerce-app-7129328-5791999.png"
+        width="60px"
+        height="60px"
+      />
     </div>
-   
-  </div>
-</nav>
 
+    <!-- input div  -->
 
-<table class="table" *ngIf="!showAddForm && !showEditForm">
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of getPaginatedProducts()">
-      <td><img src="{{ product.image }}" alt="{{ product.name }}" style="max-width: 100px; max-height: 100px;"></td>
-      <td>{{ product.name }}</td>
-      <td class="des">{{ product.description }}</td>
-      <td>{{ product.price }}</td>
-      <td>
-        <button class="btn btn-primary" style="margin-right: 15px;" (click)="editProduct(product)">Edit</button>
-        <button class="btn btn-danger" (click)="deleteProduct(product._id)">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <div
+      style="display: flex; align-items: center; justify-content: space-between"
+    >
+      <input
+        *ngIf="
+          !showorder &&
+          !showAddForm &&
+          !showEditForm &&
+          !showcontactpage &&
+          productpage
+        "
+        type="text"
+        class="searchbar"
+        [(ngModel)]="searchQuery"
+        placeholder="Search Product"
+      />
 
-  
-  
-  <div *ngIf="showEditForm && selectedProduct"> 
-  
-    <form action="/products"  method="PUT" enctype="multipart/form-data" #form="ngForm" style="margin-left: 200px; margin-right: 200px;  margin-bottom: 10PX; margin-top: 20px;">
+      <div  *ngIf="
+      !showorder &&
+      !showAddForm &&
+      !showEditForm &&
+      !showcontactpage &&
+      productpage"
+      style="padding-right: 10px; cursor: pointer;"
+      >
+        <img
+          (click)="sort()"
+          src="../../assets/down.png"
+          width="30px"
+          height="30px"
+          alt=""
+        />
+        <img
+          style="margin-bottom: 4px"
+          (click)="reversesort()"
+          src="https://cdn3d.iconscout.com/3d/premium/thumb/up-arrow-6798726-5600617.png"
+          width="20px"
+          height="25px"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <!-- product table  -->
+
+    <table
+      style="margin-top: 20px"
+      class="table"
+      *ngIf="
+        !showAddForm &&
+        !showEditForm &&
+        !showorder &&
+        !showcontactpage &&
+        productpage
+      "
+    >
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <!-- <th>Description</th> -->
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredAndPaginatedProducts()">
+          <td>
+            <img
+              src="{{ product.image }}"
+              alt="{{ product.name }}"
+              style="max-width: 100px; max-height: 100px"
+            />
+          </td>
+          <td>{{ product.name }}</td>
+
+          <td>{{ product.price }}</td>
+          <td>
+            <img
+              src="https://cdn3d.iconscout.com/3d/premium/thumb/edit-document-8240451-6578676.png?f=webp"
+              width="50px"
+              height="50px"
+              style="cursor: pointer"
+              (click)="editProduct(product)"
+            />
+            <img
+              src="https://cdn3d.iconscout.com/3d/premium/thumb/trash-button-7859072-6307893.png?f=webp"
+              width="35px"
+              height="37px"
+              style="cursor: pointer"
+              (click)="deleteProduct(product._id)"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- order table  -->
+
+    <table class="table" *ngIf="showorder && !showAddForm && !showcontactpage">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.username }}</td>
+          <td>
+            {{ order.name }}
+            <ng-container *ngFor="let item of parseItem(order.item)">
+              {{ item.name + "," }} <br />
+            </ng-container>
+          </td>
+          <td>
+            {{ order.price }}
+            <ng-container *ngFor="let item of parseItem(order.item)">
+              {{ item.price + "," }} <br />
+            </ng-container>
+          </td>
+          <td>
+            {{ order.quantity }}
+            <ng-container *ngFor="let item of parseItem(order.item)">
+              {{ item.quantity + "," }} <br />
+            </ng-container>
+          </td>
+          <td>
+            {{ order.totalprice }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- message table -->
+
+    <table class="table" *ngIf="showcontactpage && !showAddForm">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts">
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.message }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- pagination -->
+
+    <nav
+      *ngIf="!showAddForm && !showEditForm && !showorder && !showcontactpage"
+      aria-label="Page navigation example"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+      "
+    >
+      <ul class="pagination">
+        <li class="page-item" [ngClass]="{ disabled: currentPage === 1 }">
+          <a
+            class="page-link"
+            href="javascript:void(0)"
+            (click)="onPageChange(currentPage - 1)"
+            >Previous</a
+          >
+        </li>
+        <li class="page-item" *ngFor="let pageNumber of getPageNumbers()">
+          <a
+            class="page-link"
+            href="javascript:void(0)"
+            (click)="onPageChange(pageNumber)"
+            >{{ pageNumber }}</a
+          >
+        </li>
+        <li
+          class="page-item"
+          [ngClass]="{ disabled: currentPage === getTotalPages() }"
+        >
+          <a
+            class="page-link"
+            href="javascript:void()"
+            (click)="onPageChange(currentPage + 1)"
+            >Next</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- edit form  -->
+
+    <div *ngIf="showEditForm && selectedProduct">
+      <form
+        action="/products"
+        method="PUT"
+        enctype="multipart/form-data"
+        #form="ngForm"
+        style="
+          margin-left: 200px;
+          margin-right: 200px;
+          margin-bottom: 10px;
+          margin-top: 20px;
+        "
+      >
         <h3>Edit Product</h3>
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="selectedProduct.name" required>
-      </div>
-      <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description" [(ngModel)]="selectedProduct.description" required></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="price" class="form-label">Price</label>
-        <input type="number" class="form-control" id="price" name="price" [(ngModel)]="selectedProduct.price" required>
-      </div>
-      <div class="mb-3">
-        <label for="image" class="form-label">Image</label>
-        <input type="file" class="form-control" id="image" name="image" (change)="onFileSelected($event)" accept="image/*">
-        <img *ngIf="selectedProduct?.image" [src]="selectedProduct.image" alt="Product Image" style="max-width: 100px; max-height: 100px;">
-      </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            [(ngModel)]="selectedProduct.name"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            class="form-control"
+            id="description"
+            name="description"
+            [(ngModel)]="selectedProduct.description"
+            required
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            name="price"
+            [(ngModel)]="selectedProduct.price"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Image</label>
+          <input
+            type="file"
+            class="form-control"
+            id="image"
+            name="image"
+            (change)="onFileSelected($event)"
+            accept="image/*"
+          />
+          <img
+            *ngIf="selectedProduct?.image"
+            [src]="selectedProduct.image"
+            alt="Product Image"
+            style="max-width: 100px; max-height: 100px"
+          />
+        </div>
 
-      <div class="mb-3" >
-        <label for="imageUrl" class="form-label">Image (URL)</label>
-        <input type="text" class="form-control" id="image" name="image" [(ngModel)]="selectedProduct.image" >
-      </div>
-  
-      <button type="submit" style="margin-right: 10px;" class="btn btn-primary" (click)="updateProduct(form)">Update</button>
-      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
-    </form>
-  </div>
-  
+        <div class="mb-3">
+          <label for="imageUrl" class="form-label">Image (URL)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="image"
+            name="image"
+            [(ngModel)]="selectedProduct.image"
+          />
+        </div>
 
-  <div *ngIf="showAddForm">
-    
-    <form  action="/products" method="POST" enctype="multipart/form-data" #form="ngForm" style="margin-left: 200px; margin-right: 200px; margin-bottom: 10PX; margin-top: 20px;">
+        <button
+          type="submit"
+          style="margin-right: 10px"
+          class="btn btn-primary"
+          (click)="updateProduct(form)"
+        >
+          Update
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="cancelEdit()">
+          Cancel
+        </button>
+      </form>
+    </div>
+
+    <!-- add form  -->
+
+    <div *ngIf="showAddForm">
+      <form
+        action="/products"
+        method="POST"
+        enctype="multipart/form-data"
+        #form="ngForm"
+        style="
+          margin-left: 200px;
+          margin-right: 200px;
+          margin-bottom: 10px;
+          margin-top: 20px;
+        "
+      >
         <h3>Add Product</h3>
-      <!-- Form fields for adding a product -->
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newProduct.name" required>
-      </div>
-      <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description" [(ngModel)]="newProduct.description" required></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="price" class="form-label">Price</label>
-        <input type="number" class="form-control" id="price" name="price" [(ngModel)]="newProduct.price" required>
-      </div>
-      <div class="mb-3">
-        <label for="image" class="form-label">Image (Upload)</label>
-        <input type="file" class="form-control" id="image" name="image"   (change)="onFileSelected($event)" accept="image/*">
-      </div>
-      <img *ngIf="newProduct?.image" [src]="newProduct.image" alt="Product Image" style="max-width: 100px; max-height: 100px;">
-    
-      <!-- Image URL field -->
-      <div class="mb-3" >
-        <label for="imageUrl" class="form-label">Image (URL)</label>
-        <input type="text" class="form-control" id="image" name="image" [(ngModel)]="newProduct.image" >
-      </div>
-      <!-- Add more fields as needed -->
-  
-      <button type="submit" style="margin-right: 10px;" class="btn btn-primary" (click)="saveProduct(form)">Save</button>
-      <button type="button" class="btn btn-secondary"(click)="resetNewProduct()" >Cancel</button>
-    </form>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            [(ngModel)]="newProduct.name"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            class="form-control"
+            id="description"
+            name="description"
+            [(ngModel)]="newProduct.description"
+            required
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            name="price"
+            [(ngModel)]="newProduct.price"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Image (Upload)</label>
+          <input
+            type="file"
+            class="form-control"
+            id="image"
+            name="image"
+            (change)="onFileSelected($event)"
+            accept="image/*"
+          />
+        </div>
+        <img
+          *ngIf="newProduct?.image"
+          [src]="newProduct.image"
+          alt="Product Image"
+          style="max-width: 100px; max-height: 100px"
+        />
 
+        <div class="mb-3">
+          <label for="imageUrl" class="form-label">Image (URL)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="image"
+            name="image"
+            [(ngModel)]="newProduct.image"
+          />
+        </div>
+
+        <button
+          type="submit"
+          style="margin-right: 10px"
+          class="btn btn-primary"
+          (click)="saveProduct(form)"
+        >
+          Save
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="resetNewProduct()"
+        >
+          Cancel
+        </button>
+      </form>
+    </div>
   </div>
-
-  <nav  *ngIf="!showAddForm && !showEditForm" aria-label="Page navigation example" style="margin-left: 380px;">
-    <ul class="pagination" >
-      <li class="page-item" [ngClass]="{ 'disabled': currentPage === 1 }">
-        <a class="page-link" href="javascript:void(0)" (click)="onPageChange(currentPage - 1)">Previous</a>
-      </li>
-      <li class="page-item" *ngFor="let pageNumber of getPageNumbers()">
-        <a class="page-link" href="javascript:void(0)" (click)="onPageChange(pageNumber)">{{ pageNumber }}</a>
-      </li>
-      <li class="page-item" [ngClass]="{ 'disabled': currentPage === getTotalPages() }">
-        <a class="page-link" href="javascript:void()"(click)="onPageChange(currentPage + 1)">Next</a>
-      </li>
-    </ul>
-  </nav>
-  
- 
-  
-  
-  
+</div>

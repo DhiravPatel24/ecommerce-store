@@ -1,3 +1,10 @@
+.gradient_text {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(176,50,73,1) 0%, rgba(209,32,64,1) 0%, rgba(218,103,126,1) 100%, rgba(77,0,25,1) 100%, rgba(0,212,255,1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Hide the original text color */
+  }
+
 .main{
     display: flex;
     flex-direction: row;
@@ -13,13 +20,13 @@
 }
 
 .contact-form {
-   
+    width: 350px;
     margin-top: 20px;
     margin-right: 30px;
     padding: 20px;
-    border: 1px solid #ccc;
+    
     border-radius: 5px;
-    background-color: #f9f9f9;
+   
 }
 .map{
     margin-top: 20px;
@@ -45,17 +52,17 @@ textarea {
 }
 
 button {
+    width: 100%;
+    
     padding: 10px 20px;
-    background-color:brown;
-    color: #fff;
+    
+    color: #fff; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #67000a;
-}
+
 h2{
     color: brown;
     margin-bottom: 15px;

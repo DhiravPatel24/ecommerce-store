@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit{
  
   @Input() product!: Product;
   cartItems: Product[] = [];
- 
+   user:string = ''
 
   constructor(private route:ActivatedRoute, private cartService:CartService,private productService:StoreService, private http:HttpClient){}
 
@@ -48,13 +48,24 @@ addToCart(product: Product): void {
   this.cartService.addToCart(product);
 }
 
+
 async onCheckouts(productId: string): Promise<void> {
   try {
     
     const productResponse: any = await this.http.get<any>(`http://localhost:4242/products/${productId}`).toPromise();
-    
-    
+  
+    const currentUserString = localStorage.getItem('currentUser');
+    if (currentUserString !== null) {
+      // Parse the JSON string to get the currentUser object
+      const currentUser = JSON.parse(currentUserString);
+  
+      const username = currentUser?.username;
+      this.user = username
+      console.log(username)
+    }
+
     const requestBody = {
+      username:  this.user ,
       name: productResponse.name,
       description: productResponse.description,
       price: productResponse.price,
@@ -69,7 +80,9 @@ async onCheckouts(productId: string): Promise<void> {
     if (stripe) {
       stripe.redirectToCheckout({
         sessionId: response.sessionId 
+        
       });
+      
     }
   } catch (error) {
     console.error('Error during checkout:', error);

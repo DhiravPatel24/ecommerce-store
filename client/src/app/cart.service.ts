@@ -29,7 +29,6 @@ export class CartService {
       this.cartItems.push(product);
       alert('Item added into Cart')
       
-      
     }
   }
 
@@ -65,5 +64,7 @@ export class CartService {
       }
     }
   }
+
+  
 
 }

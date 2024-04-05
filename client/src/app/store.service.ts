@@ -31,8 +31,6 @@ export class StoreService {
     return this.http.post<Product>(this.apiUrls, product);
   }
 
-
-
 deleteProduct(productId: string): Observable<void> {
     const url = `${this.apiUrls}/${productId}`;
     return this.http.delete<void>(url);
@@ -44,7 +42,6 @@ deleteProduct(productId: string): Observable<void> {
   }
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);
-   
     return throwError(error); 
   }
 }

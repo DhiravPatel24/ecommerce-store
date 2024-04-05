@@ -3,8 +3,8 @@
 
 <nav class="navbar bg-body-tertiary" style="margin-bottom: 5px;">
   <div class="container-fluid d-flex justify-content-between align-items-center">
-    <img src="../../assets/shopping-cart.png" width="30px" height="30px" style="position: absolute; margin-left: 90px;" alt="">
-    <a class="navbar-brand" routerLink="/home" style="color: brown;">DP Store</a>
+    <img src="../../assets/shopping-cart.png" width="30px" height="30px" style="position: absolute; margin-left: 100px;" alt="">
+    <a class="navbar-brand" routerLink="/home" style="color: rgb(235, 32, 113);">DP STORE</a>
     <div class="d-flex" style=" right: 90px; ">
       <div  class="me-3" style="padding-right: 10px;">
         <a class="nav-link" routerLink="/home">Home</a>
@@ -20,20 +20,44 @@
       </div>
     </div>
     <div *ngIf="isCartRoute()">
-      <!-- Clear cart button -->
+   
      
       <button class="btn btn-danger" (click)="clearCart()">Clear Cart</button>
     </div>
+  
    
     <div *ngIf="!isCartRoute()" >
-     
-      <button class="btn btn-secondary position-relative" (click)="goToCart()">
-        <i class="fas fa-shopping-cart fa-lg" ></i>
+      
+      
+      <button style="margin-right: 15px;" class="btn position-relative" (click)="goToCart()">
+        <img  src="https://cdn3d.iconscout.com/3d/premium/thumb/cart-2872012-2389411.png" width="35px" height="35px" alt="">
+        <span class="badge">{{ cartService.cartCount$ | async }} </span>
+        <!-- <i  class="fas fa-shopping-cart fa-lg" ></i> -->
        
-        <span class="badge bg-orange rounded-circle position-absolute top-0 start-100 translate-middle">
-          {{ cartService.cartCount$ | async }} 
-        </span>
+        <!-- <span class="badge bg-orange rounded-circle position-absolute top-0 start-100 translate-middle">
+          {{ cartService.cartCount$ | async }}  
+        </span> -->
+        
+
       </button>
+      <img style="cursor: pointer;" (click)="showlogin()" src="https://cdn3d.iconscout.com/3d/premium/thumb/profile-8748595-7190777.png?f=webp" width="35px" height="35px" alt="">
+
+      
+      <div *ngIf="showlogindetails"  class="login_details" style="margin-left: 50px;">
+      
+        <span style="font-size: small; margin-left: 30px;" *ngIf="currentUser">Welcome, {{ currentUser.username }}</span><br>
+     
+   
+      
+        <button (click)="onLogOut()" *ngIf="currentUser" style="margin-left: 115px; margin-top: 0; background-color: white; border: none; color: blue; text-decoration: none; font-size: small;">
+          
+          Log Out
+        </button>
+       
+      </div> 
+     
+      
     </div>
+    
   </div>
 

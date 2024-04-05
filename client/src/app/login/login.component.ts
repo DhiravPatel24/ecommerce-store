@@ -12,6 +12,7 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   loginError: string ='';
+  admin:boolean = false
 
   constructor(private http:HttpClient, private router: Router, private authService:AuthService ){}
 
@@ -35,6 +36,7 @@ export class LoginComponent {
 
           
           this.setTokenInCookie(token);
+          this.admin=true
           this.router.navigate(['/admin']);
         } else {
           

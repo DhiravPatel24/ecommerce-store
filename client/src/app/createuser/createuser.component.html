@@ -1,0 +1,32 @@
+
+<div class="main">
+
+    <div class="img">
+      <img src="https://cdn3d.iconscout.com/3d/premium/thumb/man-got-shopping-discount-7129319-5791990.png?f=webp" alt="">
+      
+    </div>
+  
+    <div class="login-container">
+        <h2 class="gradient_text">Create an Account</h2>
+        <form (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="username">Email:</label>
+            <input type="text" id="username"  name="username" [(ngModel)]="username" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" [(ngModel)]="password" required>
+          </div>
+          <button style="margin-bottom: 10px; background: rgb(2,0,36);
+          background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(176,50,73,1) 0%, rgba(209,32,64,1) 0%, rgba(218,103,126,1) 100%, rgba(77,0,25,1) 100%, rgba(0,212,255,1) 100%);" type="submit">Sign Up</button>
+          <span style="padding-right: 10px; ">Have an account ?</span>
+          <a style="text-decoration: none;" routerLink="/user">Login</a>
+        </form>
+      </div>
+
+   
+      
+  
+  </div>
+  
+    

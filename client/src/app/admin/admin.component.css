@@ -1,27 +1,99 @@
-.table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .table th,
-  .table td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .table th {
-    background-color: #f2f2f2;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #f5f5f5;
-  }
-  a{
-    pointer-events: painted;
-  }
+.gradient_text {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(176, 50, 73, 1) 0%,
+    rgba(209, 32, 64, 1) 0%,
+    rgba(218, 103, 126, 1) 100%,
+    rgba(77, 0, 25, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; 
+}
 
-  .des{
-    width: 500px;
-  }
- 
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  width: 100px;
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+a {
+  pointer-events: painted;
+}
+
+.des {
+  width: 500px;
+}
+.main {
+  display: flex;
+  height: 180vh;
+}
+.left_sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  height: 100%;
+  box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
+
+  background-color: rgb(81, 81, 81);
+}
+.product {
+  font-size: small;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 25px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  height: fit-content;
+  box-shadow: 0px 0px 10px 0px rgba(52, 52, 52, 0.5);
+  border-radius: 5px;
+}
+
+.table_div {
+  width: 100%;
+  /* margin-left: 20px; */
+  padding: 0px;
+}
+
+.product:hover {
+  /* background-color: rgba(255, 21, 32, 0.608); */
+  background-color: rgba(225, 225, 225, 0.608);
+  color: white;
+}
+
+.toggleimage {
+  cursor: pointer;
+}
+
+.searchbar {
+  width: 200px;
+  height: 40px;
+  font-weight: 50;
+  font-size: small;
+  border-radius: 3px;
+  border: none;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  box-shadow: 0px 0px 6px 0px rgba(52, 52, 52, 0.5);
+  letter-spacing: 2px;
+  padding: 5px;
+}
+
+

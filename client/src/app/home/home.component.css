@@ -1,33 +1,41 @@
 .card-container {
-    width: 200px; /* Set the width as per your requirement */
+    width: 200px; 
    
-    margin-right: 10px; /* Margin between cards */
+    margin-right: 10px; 
   }
   
   .card-row {
-    display: flex; /* Use flexbox layout */
-    flex-wrap: nowrap; /* Prevent wrapping to the next line */
-    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    display: flex; 
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
   }
 
   .card-container img {
-    width: 198px; /* Set the fixed width */
-    height: 150px; /* Set the fixed height *
-    object-fit: contain; /* Maintain aspect ratio and cover the entire space */
+    width: 198px; 
+    height: 150px; 
+    object-fit: contain;
    
   }
 
-  .container{
+  .card-container{
     margin-top: 30px;
+    
   }
+.ca{
+  transition: transform 0.9s ease;
+}
+.ca:hover{
+  transform: scale(1.07);
+}
   
 
-  /* CSS for the card container */
+ 
 .card-container {
+  
     position: relative;
   }
   
-  /* CSS for the cart icon */
+ 
   .btn-cart {
     position: absolute;
     bottom: 25px;
@@ -56,11 +64,9 @@
 
 .carousel-item .img_btn {
   position: absolute;
-  bottom: 25%; /* Adjust this value to position the button vertically */
-  left: 15%; /* Center the button horizontally */
+  bottom: 25%; 
+  left: 15%; 
   transform: translateX(-50%);
-  /* background-color: rgba(255, 255, 255, 0.7); Add background color with transparency */
-  /* padding: 10px 20px; */
   border-color: black;
   border-radius: 0px;
   font-size: 16px;
@@ -80,5 +86,36 @@
   color: brown;
 }
 
+.gradient_text {
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(176,50,73,1) 0%, rgba(209,32,64,1) 0%, rgba(218,103,126,1) 100%, rgba(77,0,25,1) 100%, rgba(0,212,255,1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; 
+}
 
+.main{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
   
+}
+
+.des{
+  margin-top: 50px;
+  margin-left: 70px;
+}
+h1{
+  
+  line-height: 55px;
+}
+.des button{
+  letter-spacing: 4px;
+  padding: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(176,50,73,1) 0%, rgba(209,32,64,1) 0%, rgba(218,103,126,1) 100%, rgba(77,0,25,1) 100%, rgba(0,212,255,1) 100%);
+}

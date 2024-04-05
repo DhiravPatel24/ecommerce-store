@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { UserStateService } from './user-state.service';
 
 
 @Injectable({
@@ -11,14 +12,15 @@ export class AuthService {
   public loggedIn = false;
   public token: string | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userStateService:UserStateService) {}
   login(email: string, password: string): Observable<boolean> {
 
     
     return this.http.post<any>('http://localhost:4242/login', { email, password }).pipe(
       map(response => {
         if (response && response.token) {
-          console.log(response)
+         
+       
           this.loggedIn = true;
           this.token = response.token;
           return response; 
@@ -62,4 +64,5 @@ export class AuthService {
 
    
   }
+
 }

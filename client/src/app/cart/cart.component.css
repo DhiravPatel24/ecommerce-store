@@ -1,0 +1,29 @@
+.gradient_text {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(176,50,73,1) 0%, rgba(209,32,64,1) 0%, rgba(218,103,126,1) 100%, rgba(77,0,25,1) 100%, rgba(0,212,255,1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Hide the original text color */
+  }
+
+.item{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: end;
+    /* padding-right: 20px; */
+    margin-bottom: 10px;
+}
+.card{
+    height: fit-content;
+    display: flex;
+    
+}
+.main{
+    display: flex;
+}
+.empty_cart{
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

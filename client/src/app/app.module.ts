@@ -19,6 +19,11 @@ import { ProductComponent } from './product/product.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { ProductpageComponent } from './productpage/productpage.component';
+import { UserloginComponent } from './userlogin/userlogin.component';
+import { CreateuserComponent } from './createuser/createuser.component';
+
+import { UserService } from './user.service';
+import { OrderService } from './order.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,10 @@ import { ProductpageComponent } from './productpage/productpage.component';
     ProductComponent,
     ContactComponent,
     AboutComponent,
-    ProductpageComponent   
+    ProductpageComponent,
+    UserloginComponent,
+    CreateuserComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -46,7 +54,9 @@ import { ProductpageComponent } from './productpage/productpage.component';
     provideClientHydration(),
     StoreService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UserService,
+    OrderService
     
   ],
   bootstrap: [AppComponent]

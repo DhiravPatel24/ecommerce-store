@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thanks for your order!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <script>
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('session_id');
+
+    fetch('/successcart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ sessionId: sessionId  }),
+    })
+   
+</script>
+  <div class="main">
+    <img src="https://cdn3d.iconscout.com/3d/premium/thumb/man-paying-via-card-for-shopping-7129315-5791986.png?f=webp" alt="">
+    <div class="description" >
+
+      <p class="gradient_text">
+        Thank you for your recent order with DP Store! We truly appreciate your business and are thrilled that you chose to shop with us. If you have any questions, please email
+        
+      </p>
+      <a href="mailto:dpdemo24@gmail.com">dpdemo24@gmail.com</a>
+    </div>
+  </div>
+</body>
+</html>

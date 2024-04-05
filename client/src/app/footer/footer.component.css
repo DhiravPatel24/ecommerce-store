@@ -1,41 +1,37 @@
 .footer {
-    background-color: #171718; /* Light gray background color */
-    padding: 20px 0; /* Add some padding */
+    background-color: black;
+    padding: 20px 0; 
     font-size: 14px; 
-    color: white;/* Adjust font size */
+    color: white;
   }
   
   .container {
-    max-width: 1200px; /* Set maximum width for content */
-    margin: 0 auto; /* Center content horizontally */
+    max-width: 1200px; 
+    margin: 0 auto;
   }
   
-  /* Style for the column layout */
+  
   .row {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
   
-  /* Style for individual columns */
   .col-md-4 {
-    width: 30%; /* Adjust column width as needed */
-    margin-bottom: 20px; /* Add some space between columns */
+    width: 30%; 
+    margin-bottom: 20px; 
   }
   
-  /* Style for headings */
   h5 {
-    margin-bottom: 10px; /* Add some space below headings */
+    margin-bottom: 10px; 
   }
   
-  /* Style for text */
   p {
-    margin-bottom: 5px; /* Add some space below paragraphs */
+    margin-bottom: 5px; 
   }
   
-  /* Style for horizontal rule */
   hr {
-    border-color: #dee2e6; /* Light gray border color */
+    border-color: #dee2e6; 
   }
 
   .copyright{
@@ -45,4 +41,9 @@
   h5{
     color: brown;
   }
-  
+  .gradient_text {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(176,50,73,1) 0%, rgba(209,32,64,1) 0%, rgba(218,103,126,1) 100%, rgba(77,0,25,1) 100%, rgba(0,212,255,1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; 
+  }

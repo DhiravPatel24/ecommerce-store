@@ -1,43 +1,55 @@
 <app-header></app-header>
 
 <div class="container">
-    <h2>Cart</h2>
-    <div *ngIf="cartItems.length === 0">
-        <p>Your cart is empty.</p>
+    <h1>Cart</h1>
+    <div class="empty_cart" *ngIf="cartItems.length === 0">
+        <h1 class="gradient_text">Your cart is empty.  <br> <h6 style="color: rgb(117, 117, 117);">Please, Add item into a cart</h6></h1>
+        
+        <img src="https://cdn3d.iconscout.com/3d/premium/thumb/couple-having-fun-while-shopping-7738960-6241787.png?f=webp" alt="">
     </div>
-    <div *ngFor="let item of cartItems; let i = index">
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img [src]="item.image" class="img-fluid rounded-start" alt="{{ item.name }}">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ item.name }}</h5>
-                        <!-- <p class="card-text">{{ item.description }}</p> -->
-                        <p class="card-text">Price: {{ item.price }}</p>
-                        <p class="card-text">Amount: {{ item.price * item.quantity }}</p>
-                        <div class="d-flex align-items-center">
-                            
-                            <button class="btn btn-secondary me-2" (click)="decrementQuantity(i)">-</button>
-                            <span>{{ item.quantity }}</span>
-                            <button class="btn btn-secondary ms-2" (click)="incrementQuantity(i)">+</button>
-                           
-                            <button class="btn btn-danger ms-auto" (click)="removeFromCart(item)">Remove</button><br>
-                           
+    <div style="display: flex; align-items: center;">
+   
+    <img *ngIf="cartItems.length != 0" style="width: 500px; height: 400px; padding-right: 10px; padding-bottom: 60px;" src="https://cdn3d.iconscout.com/3d/premium/thumb/man-getting-a-discount-coupon-7743076-6241784.png" alt="">
+        <div class="des" style="display: flex; flex-direction: column;  font: 1em sans-serif; margin-right:80px ; align-items: center;" >
+
+       
+        <div class="item" *ngFor="let item of cartItems; let i = index">
+            
+            <div class="card mb-3" style="box-shadow: 0px 0px 10px 0px rgb(152, 152, 152); ">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img [src]="item.image" class="img-fluid rounded-start" alt="{{ item.name }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.name }}</h5>
+                            <!-- <p class="card-text">{{ item.description }}</p> -->
+                            <p class="card-text">Price: {{ item.price }}</p>
+                            <p class="card-text">Amount: {{ item.price * item.quantity }}</p>
+                            <div class="d-flex align-items-center">
+                                
+                                <button class="btn btn-secondary me-2" (click)="decrementQuantity(i)">-</button>
+                                <span>{{ item.quantity }}</span>
+                                <button class="btn btn-secondary ms-2" (click)="incrementQuantity(i)">+</button>
+                               
+                                <button class="btn btn-danger ms-auto" (click)="removeFromCart(item)">Remove</button><br>
+                               
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
    
     <div class="text-center mt-4 mb-4" style="display: flex; justify-content: space-between;" >
-        <button class="btn btn-secondary" style="margin-right: 10px;" routerLink="/home">Continue Shopping</button>
+        <button class="btn btn-primary" style="margin-right: 10px;" routerLink="/home">Continue Shopping</button>
         <div *ngIf="cartItems.length > 0" class="text-end">
-            <p style="color: green; ">Total Price: {{ getTotalPrice() }}</p>
+            <p style="color: green;  font-size: 20px; font-weight: 500;">Total Price: {{ getTotalPrice() }}</p>
         </div>
-        <button (click)="onCheckout()" *ngIf="cartItems.length > 0" class="btn btn-primary me-2" style=" background-color: rgb(255, 128, 0); border: none   ;"  >Proceed to Checkout</button>
+        <button (click)="onCheckout()" *ngIf="cartItems.length > 0" class="btn btn-primary me-2" style="  background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(176,50,73,1) 0%, rgba(209,32,64,1) 0%, rgba(218,103,126,1) 100%, rgba(77,0,25,1) 100%, rgba(0,212,255,1) 100%); border: none   ;"  >Proceed to Checkout</button>
     </div>
 </div>
 

@@ -5,6 +5,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { catchError, tap, throwError } from 'rxjs';
+import { OrderService } from '../order.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin',
@@ -12,27 +14,63 @@ import { catchError, tap, throwError } from 'rxjs';
   styleUrl: './admin.component.css'
 })
 export class AdminComponent implements OnInit{
+  
+  constructor(private productService:StoreService, private router:Router,private authservice: AuthService, private orderService:OrderService, private http:HttpClient){}
+  
+  
   products:Product[]=[];
-
-  constructor(private productService:StoreService, private router:Router,private authservice: AuthService){}
-
-  showAddForm:boolean= false
-  showEditForm = false;
   product: Product[] = [];
   selectedProduct: Product | null = null;
+  newProduct: Product = {  name: '', description: '', price: 0, image: '', quantity: 0 }; 
+  selectedFileName: string = '';
   currentPage: number = 1; 
   itemsPerPage: number = 7; 
+   searchQuery: string = '';
 
-  selectedFileName: string = '';
+  orders: any = [];
+  contacts: any=[];
+  showcontactpage = false
+  showorder:boolean = false
+  productpage:boolean = true
+  sidebar:boolean=true
+  showAddForm:boolean= false
+  showEditForm = false;
 
-  newProduct: Product = {  name: '', description: '', price: 0, image: '', quantity: 0 }; 
 
   ngOnInit(): void {
     this.loadProducts()
     this.productService.getProducts().subscribe(products => {
       this.products = products;
     });
+
+    this.orderService.getOrders().subscribe(
+      (data) => {
+        this.orders = data;
+      },
+      (error) => {
+        console.error('Error fetching orders:', error);
+      }
+    );
+
+    this.http.get<any[]>('http://localhost:4242/contacts').subscribe(
+      (response) => {
+        this.contacts = response;
+      },
+      (error) => {
+        console.error('Error fetching contacts:', error);
+      }
+    );
   }
+  parseItem(itemString: string): any[] {
+    try {
+      const parsedItem = JSON.parse(itemString);
+      return Array.isArray(parsedItem) ? parsedItem : [];
+    } catch (error) {
+      console.error('Error parsing item:', error);
+      return [];
+    }
+  }
+  
 
   loadProducts(): void {
     this.productService.getProducts().subscribe(
@@ -49,11 +87,63 @@ export class AdminComponent implements OnInit{
     this.currentPage = pageNumber;
   }
 
-  getPaginatedProducts(): Product[] {
+  // getPaginatedProducts(): Product[] {
+  //   const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+  //   const endIndex = Math.min(startIndex + this.itemsPerPage, this.products.length);
+  //   return this.products.slice(startIndex, endIndex);
+  // }
+  filteredAndPaginatedProducts(): Product[] {
+    let filteredProducts = this.products;
+  
+    // Filter products based on search query
+    if (this.searchQuery.trim() !== '') {
+      filteredProducts = filteredProducts.filter(product =>
+        product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+  
+  
+    // Calculate pagination
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = Math.min(startIndex + this.itemsPerPage, this.products.length);
-    return this.products.slice(startIndex, endIndex);
+    const endIndex = Math.min(startIndex + this.itemsPerPage, filteredProducts.length);
+  
+    // Return paginated products
+    return filteredProducts.slice(startIndex, endIndex);
   }
+
+  sort() : Product[]{
+    let filteredProducts = this.products;
+  
+    // Filter products based on search query
+    if (this.searchQuery.trim() !== '') {
+      filteredProducts = filteredProducts.filter(product =>
+        product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+    return filteredProducts.sort((a, b) => a.price - b.price);
+  }
+  reversesort():Product[]{
+    let filteredProducts = this.products;
+  
+    // Filter products based on search query
+    if (this.searchQuery.trim() !== '') {
+      filteredProducts = filteredProducts.filter(product =>
+        product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+    return filteredProducts.sort((a, b) => b.price - a.price);
+  }
+  
+
+  // filteredProducts() {
+  //   if (this.searchQuery.trim() === '') {
+  //     return this.products; 
+  //   } else {
+  //     return this.products.filter(product =>
+  //       product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+  //     );
+  //   }
+  // }
 
   getPageNumbers(): number[] {
     const totalProducts = this.products.length;
@@ -75,9 +165,8 @@ export class AdminComponent implements OnInit{
   }
 
   cancelEdit(): void {
- 
     this.selectedProduct = null; 
-    this.showAddForm=false
+    this.showEditForm=false
   }
 
    updateProduct(form: NgForm): void {
@@ -118,7 +207,25 @@ export class AdminComponent implements OnInit{
   }
   }
 
-  
+  togglecontactpage(){
+    this.showcontactpage=true
+    
+  }
+
+  togglesidebar(){
+    this.sidebar=!this.sidebar
+  }
+
+  toggleproduct(){
+    this.productpage=true
+    this.showorder=false
+    this.showcontactpage=false
+  }
+
+  toggleorder(){
+    this.showorder=true
+    this.showcontactpage=false
+  }  
 
   toggleAddForm(): void {
     this.showAddForm = !this.showAddForm;
