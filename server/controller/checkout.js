@@ -111,7 +111,8 @@ async function getProductById(productId) {
             totalprice:totalprice,
             items: itemsString, 
               username:username
-            },  
+            },
+            customer_email: username,  
         });
         res.status(200).json(session);
     } catch (error) {
