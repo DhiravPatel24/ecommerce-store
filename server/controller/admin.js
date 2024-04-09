@@ -1,6 +1,6 @@
 const Admin = require('../models/Admin.js');
 const User = require('../models/User.js');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken');
 
@@ -16,10 +16,10 @@ async function createAdmin (req, res){
         }
 
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // const hashedPassword = await bcrypt.hash(password, 10);
 
 
-        const newAdmin = new Admin({ email, password: hashedPassword });
+        const newAdmin = new Admin({ email, password });
         const user = new User({ username:email, password: password });
 
         await newAdmin.save();
@@ -46,7 +46,7 @@ async function createAdmin (req, res){
         }
         console.log(admin)
 
-        const isPasswordValid = await bcrypt.compare(password, admin.password);
+        // const isPasswordValid = await bcrypt.compare(password, admin.password);
 
         if (!isPasswordValid) {
             return res.status(401).json({ message: 'Invalid email or password' });
