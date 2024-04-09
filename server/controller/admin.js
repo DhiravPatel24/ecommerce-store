@@ -1,5 +1,5 @@
-const Admin = require('../models/Admin');
-const User = require('../models/User');
+const Admin = require('../models/Admin.js');
+const User = require('../models/User.js');
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken');
@@ -9,7 +9,7 @@ async function createAdmin (req, res){
         const { email, password } = req.body;
 
 
-        const existingAdmin = await Admin.findOne({ email });
+        const existingAdmin = await Admin.findOne({ email })
 
         if (existingAdmin) {
             return res.status(400).json({ message: 'Admin already exists' });
