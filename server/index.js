@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser')
 require('dotenv').config();
+const path = require('path');
+
+
 
 const PORT = process.env.PORT || 4242
 
@@ -29,7 +32,8 @@ app.use(cors());
 app.use(express.json({limit:'50mb'}))
 app.use(bodyParser.urlencoded({ limit: '500mb', extended: true }));
 app.use(bodyParser.json({ limit: '500mb' }));
-app.use(express.static('public'))
+// app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser())
 app.set('view engine', 'ejs');
 
