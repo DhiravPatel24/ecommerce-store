@@ -20,7 +20,7 @@ const {checkoutproduct, success, checkoutcart, successcart} = require('./control
 const {orderdetails} = require('./controller/order.js')
 
 const corsOptions = {
-    origin: 'http://localhost:4200',
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   };
