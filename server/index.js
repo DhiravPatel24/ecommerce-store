@@ -19,13 +19,13 @@ const {loginuser, createuser} = require('./controller/user.js')
 const {checkoutproduct, success, checkoutcart, successcart} = require('./controller/checkout.js')
 const {orderdetails} = require('./controller/order.js')
 
-const corsOptions = {
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  };
+// const corsOptions = {
+//     origin: '*',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//   };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json({limit:'50mb'}))
 app.use(bodyParser.urlencoded({ limit: '500mb', extended: true }));
 app.use(bodyParser.json({ limit: '500mb' }));
