@@ -15,8 +15,9 @@ async function getProductById(productId) {
         const { username } = req.body; 
 
         const product = await getProductById(productId);
-
+        
         const session = await stripe.checkout.sessions.create({
+            
             line_items: [{
                 price_data: {
                     currency: 'usd',
@@ -37,8 +38,9 @@ async function getProductById(productId) {
               username:username,
               totalprice:product.price
             },           
+            customer_email: username,
         });
-
+        console.log(session)
       res.status(200).json({ sessionId: session.id });
     } catch (error) {
         next(error);

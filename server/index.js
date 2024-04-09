@@ -2,6 +2,9 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser')
+require('dotenv').config();
+
+const PORT = process.env.PORT || 4242
 
 const app = express()
 
@@ -44,4 +47,4 @@ app.post('/successcart', successcart)
 app.get('/orders', orderdetails)
  
 
-app.listen(4242,()=>console.log(`Server is Running on Port 4242`))
+app.listen(PORT,()=>console.log(`Server is Running on Port ${PORT}`))

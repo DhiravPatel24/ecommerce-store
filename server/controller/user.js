@@ -20,11 +20,12 @@ async function createuser (req, res) {
     try {
       
       const { username, password } = req.body;
-const email = username
-     
+      // const { latitude, longitude } = req.body;
+      // console.log(latitude)
+      // console.log(longitude)
+
       const user = await User.findOne({ username,password });
     
-      console.log(user)
       if (user) {
       
         const usertoken = jwt.sign({ username: user.username,password:user.password,  }, 'SECRET', { expiresIn: '1h' });

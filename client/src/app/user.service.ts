@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
 import { UserStateService } from './user-state.service';
+import { LocationService } from './location.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +14,17 @@ export class UserService {
   public usertoken: string | null = null;
    private apiUrl = 'http://localhost:4242/createuser';
    private apiUrls = 'http://localhost:4242/user';
+  
  
-  constructor(private http:HttpClient, private userStateService:UserStateService) { }
+  constructor(private http:HttpClient, private userStateService:UserStateService, private locationService:LocationService) { }
 
   signUp(username: string, password: string): Observable<any> {
     return this.http.post(this.apiUrl, { username, password }); 
   }
 
   login(username: string, password: string): Observable<any> {
-   
-    return this.http.post(this.apiUrls, { username, password }).pipe(
+
+     return this.http.post(this.apiUrls, { username, password }).pipe(
       tap((response: any) => {
         
         this.loggedIn = true;
