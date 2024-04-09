@@ -52,7 +52,7 @@ export class AdminComponent implements OnInit{
       }
     );
 
-    this.http.get<any[]>('http://localhost:4242/contacts').subscribe(
+    this.http.get<any[]>('https://ecommerce-store-smoky-zeta.vercel.app/contacts').subscribe(
       (response) => {
         this.contacts = response;
       },

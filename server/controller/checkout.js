@@ -31,8 +31,8 @@ async function getProductById(productId) {
             }],
             mode: 'payment',
             
-            success_url: 'http://localhost:4242/success.html?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url: 'http://localhost:4242/cancel.html',
+            success_url: 'https://ecommerce-store-smoky-zeta.vercel.app/success.html?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url: 'https://ecommerce-store-smoky-zeta.vercel.app/cancel.html',
             metadata: {
               productId: productId ,
               username:username,
@@ -40,8 +40,11 @@ async function getProductById(productId) {
             },           
             customer_email: username,
         });
+        
+
         console.log(session)
       res.status(200).json({ sessionId: session.id });
+      
     } catch (error) {
         next(error);
     }
@@ -101,8 +104,8 @@ async function getProductById(productId) {
                 quantity: (item.quantity),
             })),
             mode: 'payment',
-            success_url: 'http://localhost:4242/successcart.html?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url: 'http://localhost:4242/cancel.html',
+            success_url: 'https://ecommerce-store-smoky-zeta.vercel.app/successcart.html?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url: 'https://ecommerce-store-smoky-zeta.vercel.app/cancel.html',
             metadata: {
               // productId: productId ,
             totalprice:totalprice,

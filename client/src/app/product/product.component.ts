@@ -52,7 +52,7 @@ addToCart(product: Product): void {
 async onCheckouts(productId: string): Promise<void> {
   try {
     
-    const productResponse: any = await this.http.get<any>(`http://localhost:4242/products/${productId}`).toPromise();
+    const productResponse: any = await this.http.get<any>(`https://ecommerce-store-smoky-zeta.vercel.app/products/${productId}`).toPromise();
   
     const currentUserString = localStorage.getItem('currentUser');
     if (currentUserString !== null) {
@@ -71,7 +71,7 @@ async onCheckouts(productId: string): Promise<void> {
       price: productResponse.price,
       quantity: 1 
     };
- const response: any = await this.http.post<any>(`http://localhost:4242/checkout/${productId}`, requestBody).toPromise();
+ const response: any = await this.http.post<any>(`https://ecommerce-store-smoky-zeta.vercel.app/checkout/${productId}`, requestBody).toPromise();
 
     
     const stripe = await loadStripe('pk_test_51OvdziSEeNnK6Y0xdAtv4rtAED3VD8lhkHl3eYVgIF0adsvpV2n1gVm47j1VmO9koZZiZ48kytK9Dt9Dn8dXQvI000jZoCzRVY');

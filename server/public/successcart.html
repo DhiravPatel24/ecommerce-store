@@ -11,7 +11,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const sessionId = urlParams.get('session_id');
 
-    fetch('/successcart', {
+    fetch('https://ecommerce-store-smoky-zeta.vercel.app/successcart', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

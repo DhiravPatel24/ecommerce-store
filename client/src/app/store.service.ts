@@ -11,9 +11,9 @@ import { Product } from '../Products.model';
 })
 export class StoreService {
   
-  private apiUrl = 'http://localhost:4242/api/images'; 
-  private apiUrls = 'http://localhost:4242/products'
-  private Url = 'http://localhost:4242/products';
+  private apiUrl = 'https://ecommerce-store-smoky-zeta.vercel.app/api/images'; 
+  private apiUrls = 'https://ecommerce-store-smoky-zeta.vercel.app/products'
+  private Url = 'https://ecommerce-store-smoky-zeta.vercel.app/products';
 
 
   constructor(private http: HttpClient) { }

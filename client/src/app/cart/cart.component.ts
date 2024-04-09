@@ -62,7 +62,7 @@ async onCheckout(): Promise<void> {
       console.log(username)
     }
 
-   const res: any = await this.http.post('http://localhost:4242/checkout', {
+   const res: any = await this.http.post('https://ecommerce-store-smoky-zeta.vercel.app/checkout', {
         items: this.cartItems,
         totalprice:this.totalprice,
         username:this.user

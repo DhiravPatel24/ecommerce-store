@@ -21,7 +21,7 @@ export class ContactComponent {
       message: this.message
     };
   
-    this.http.post<any>('http://localhost:4242/contact', formData).subscribe(
+    this.http.post<any>('https://ecommerce-store-smoky-zeta.vercel.app/contact', formData).subscribe(
       response => {
 
         console.log(response);

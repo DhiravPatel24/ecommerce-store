@@ -16,7 +16,7 @@ export class AuthService {
   login(email: string, password: string): Observable<boolean> {
 
     
-    return this.http.post<any>('http://localhost:4242/login', { email, password }).pipe(
+    return this.http.post<any>('https://ecommerce-store-smoky-zeta.vercel.app/login', { email, password }).pipe(
       map(response => {
         if (response && response.token) {
          

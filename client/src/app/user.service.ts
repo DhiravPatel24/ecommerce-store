@@ -12,8 +12,8 @@ export class UserService {
   public loggedIn = false;
   
   public usertoken: string | null = null;
-   private apiUrl = 'http://localhost:4242/createuser';
-   private apiUrls = 'http://localhost:4242/user';
+   private apiUrl = 'https://ecommerce-store-smoky-zeta.vercel.app/createuser';
+   private apiUrls = 'https://ecommerce-store-smoky-zeta.vercel.app/user';
   
  
   constructor(private http:HttpClient, private userStateService:UserStateService, private locationService:LocationService) { }
