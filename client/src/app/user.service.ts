@@ -14,7 +14,7 @@ export class UserService {
   public usertoken: string | null = null;
    private apiUrl = 'https://ecommerce-store-smoky-zeta.vercel.app/createuser';
    private apiUrls = 'https://ecommerce-store-smoky-zeta.vercel.app/user';
-  
+  public document:any
  
   constructor(private http:HttpClient, private userStateService:UserStateService, private locationService:LocationService) { }
 
@@ -40,7 +40,8 @@ export class UserService {
     );
   }
 
-  getTokenFromCookie(): string | null {
+  getTokenFromCookie(): any {
+    if (typeof document !== 'undefined') {
     const cookies = document.cookie.split(';');
     for (let i = 0; i < cookies.length; i++) {
       const cookie = cookies[i].trim();
@@ -49,7 +50,7 @@ export class UserService {
       }
     }
     return null; 
-  }
+  }}
   
   isLoggedIn(): boolean {
     return this.loggedIn;

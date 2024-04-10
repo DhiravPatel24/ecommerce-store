@@ -12,7 +12,7 @@ export class AuthService {
   public loggedIn = false;
   public token: string | null = null;
 
-  constructor(private http: HttpClient, private userStateService:UserStateService) {}
+  constructor( private http: HttpClient, private userStateService:UserStateService) {}
   login(email: string, password: string): Observable<boolean> {
 
     
@@ -44,7 +44,8 @@ export class AuthService {
   }
 
 
-  getTokenFromCookie(): string | null {
+  getTokenFromCookie(): any {
+    if (typeof document !== 'undefined') {
     const cookies = document.cookie.split(';');
     for (let i = 0; i < cookies.length; i++) {
       const cookie = cookies[i].trim();
@@ -53,7 +54,7 @@ export class AuthService {
       }
     }
     return null; 
-  }
+  }}
 
   logout(): void {
  

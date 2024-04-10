@@ -12,8 +12,9 @@ export class AuthloginService implements CanActivate {
 
   canActivate(): boolean {
     const token = this.authService.getTokenFromCookie();
-    const usertoken = this.userService.getTokenFromCookie()
    
+    const usertoken = this.userService.getTokenFromCookie()
+    
     if ( usertoken) {
      
       return true;
