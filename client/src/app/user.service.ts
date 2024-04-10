@@ -9,7 +9,7 @@ import { LocationService } from './location.service';
 })
 export class UserService {
 
-  public loggedIn = false;
+  public loggedIn = false
   
   public usertoken: string | null = null;
    private apiUrl = 'https://ecommerce-store-smoky-zeta.vercel.app/createuser';
